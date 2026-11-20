@@ -233,7 +233,7 @@ window.Spotfire.initialize(async (mod) => {
         let hierarchy: d3.HierarchyNode<DataViewHierarchyNode> = d3.hierarchy(hierarchyRoot);
         hierarchy.sum((d: DataViewHierarchyNode) => (!d?.children && 1) || 0);
 
-        let partition = d3.partition().size([timelineWidth, timelineHeight]).padding(0).round(false);
+        let partition = d3.partition<DataViewHierarchyNode>().size([timelineWidth, timelineHeight]).padding(0).round(false);
         let partitionedHierarchy: d3.HierarchyRectangularNode<DataViewHierarchyNode> = partition(
             hierarchy
         ) as d3.HierarchyRectangularNode<DataViewHierarchyNode>;
